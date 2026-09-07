@@ -41,12 +41,12 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
 
   /** FAQ accordion items. */
   faqs = [
-    { question: 'Is the appointment really free?', answer: 'Yes — booking is completely free with zero obligation. You simply pick a time that suits you on the calendar and our team takes it from there.', open: false },
-    { question: 'What happens during the appointment?', answer: 'We take a focused look at your business and explain how our risk-free client acquisition and lead vetting service brings you qualified, decision-ready appointments. You leave with a clear next step.', open: false },
-    { question: 'How does booking work?', answer: 'Choose an open time on the calendar below, add your contact details, and the appointment is confirmed instantly. You will receive a confirmation and a reminder by email.', open: false },
-    { question: 'What do I need to prepare beforehand?', answer: 'Nothing is required upfront. If you already know which types of clients or industries you want to target, bring that along and we can make the session far more specific to you.', open: false },
-    { question: 'Can I reschedule or cancel my appointment?', answer: 'Absolutely. You can reschedule or cancel at any time from your confirmation email or calendar link — no penalties and no questions asked.', open: false },
-    { question: 'Is the appointment online or in person?', answer: 'Appointments are held online via video call, so you can join from anywhere. If you prefer a face-to-face meeting, mention it when booking and we will arrange it.', open: false },
+    { question: 'What exactly does your appointment-setting service do?', answer: 'We book high-quality, pre-qualified sales appointments for your business. You tell us the type of client you want to speak to, and our team finds and qualifies prospects who are genuinely ready to talk, then schedules the calls on your calendar.', open: false },
+    { question: 'What do you mean by “pre-qualified intent leads”?', answer: 'Before any appointment is booked, we vet each prospect on their need for your product or service, their budget, and their decision-making authority. Only prospects who show real buying intent reach your calendar — so your time is spent on meetings likely to close.', open: false },
+    { question: 'Do I have to do any of the outreach or prospecting myself?', answer: 'No. We handle the entire outreach — identifying prospects, making contact, qualifying them, and booking the calls. All you do is show up to the pre-qualified appointments we schedule for you and focus on closing and growing your business.', open: false },
+    { question: 'How many appointments can I expect?', answer: 'That depends on your target market and how much capacity you have to take meetings. We customise a monthly appointment target to your business so you get a steady, predictable flow of qualified calls without overwhelming your calendar.', open: false },
+    { question: 'How are the appointments booked into my calendar?', answer: 'The moments we qualify are automatically scheduled into your booking calendar. You receive instant confirmations and reminders, so you always know exactly who you\'re meeting and when — no double-bookings, no missed calls.', open: false },
+    { question: 'How fast will I start seeing booked appointments?', answer: 'Most clients begin receiving qualified appointments within the first two weeks. Once we understand your ideal client, we ramp up outreach quickly and keep your pipeline filled month after month so you can hit your sales targets.', open: false },
   ];
 
   /** Social proof / trust stats. */
