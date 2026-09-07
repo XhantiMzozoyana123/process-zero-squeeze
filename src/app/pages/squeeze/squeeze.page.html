@@ -1,0 +1,199 @@
+<ion-content [fullscreen]="true" class="squeeze-page">
+
+  
+  <!-- Navigation Bar — brand only (squeeze focus) -->
+  <nav class="landing-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" (click)="navigateTo('/squeeze')">
+        <ion-icon name="pulse-outline"></ion-icon>
+        <span>Process Zero</span>
+      </a>
+    </div>
+  </nav>
+
+
+<!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-glow hero-glow-2"></div>
+    <div class="hero-particles">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+    <div class="hero-content hero-animate">
+      <div class="hero-badge">
+        <ion-icon name="shield-checkmark-outline"></ion-icon>
+        <span>Zero Risk — Book a Free Strategy Call</span>
+      </div>
+      <p class="eyebrow">Strategy Call</p>
+      <h1 class="hero-title">
+        Risk-Free Client Acquisition<br />
+        <span class="highlight">& Lead Vetting</span>
+      </h1>
+      <p class="hero-subtitle">
+        Book a no-cost strategy call with Xhanti Mzozoyana to discover how Process Zero delivers
+        warm, pre-vetted opportunities to your pipeline — no cold outreach, no product development,
+                no inventory. Just selling.
+      </p>
+
+      <!-- Trusted Stats -->
+      <div class="trusted-badge">
+        <div class="avatar-stack">
+          <span class="mini-avatar">TM</span>
+          <span class="mini-avatar">LK</span>
+          <span class="mini-avatar">JO</span>
+          <span class="mini-avatar">NS</span>
+          <span class="mini-avatar more">+496</span>
+        </div>
+        <span class="trusted-text">Trusted by <strong>500+</strong> sales reps across South Africa</span>
+      </div>
+    </div>
+
+    <!-- Cal.com Booking Embed (full width) -->
+    <div class="hero-form-wrapper">
+      <div class="cal-section">
+        <div class="cal-embed-wrapper" #calEmbedContainer>
+          <div class="cal-loading">
+            <ion-spinner name="crescent" color="medium"></ion-spinner>
+            <span>Loading calendar…</span>
+          </div>
+          <!-- Cal inline embed target -->
+          <div style="width:100%;height:100%;overflow:scroll"
+               id="my-cal-inline-process-zero-risk-free-client-acquisition-and-lead-vetting"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Video Showcase -->
+   <section class="video-section reveal-on-scroll">
+     <div class="video-container">
+       <div class="video-wrapper">
+         <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%">
+           <iframe allow="fullscreen" allowfullscreen height="100%"
+                   src="https://streamable.com/e/gn9c0c?" width="100%"
+                   style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;">
+           </iframe>
+         </div>
+       </div>
+       <p class="video-caption">Watch how Process Zero delivers warm, pre-vetted opportunities to your pipeline</p>
+     </div>
+   </section>
+
+  <section class="benefits-section reveal-on-scroll">
+    <div class="section-header">
+      <p class="section-eyebrow">Why Process Zero</p>
+      <h2 class="section-title">Risk-free growth, guaranteed</h2>
+      <p class="section-subtitle">We remove every barrier between you and your next qualified client.</p>
+    </div>
+    <div class="benefits-grid">
+                  <div class="benefit-card" *ngFor="let b of benefits; let i = index">
+
+
+        <div class="benefit-icon">
+          <ion-icon [name]="b.icon"></ion-icon>
+        </div>
+        <h3 class="benefit-title">{{ b.title }}</h3>
+        <p class="benefit-desc">{{ b.description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section reveal-on-scroll">
+    <div class="section-header">
+      <p class="section-eyebrow">Simple Process</p>
+      <h2 class="section-title">From call to first sale in days</h2>
+      <p class="section-subtitle">Everything is designed to get you earning recurring commissions as fast as possible.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card" *ngFor="let step of howItWorks">
+        <div class="step-number">{{ step.step }}</div>
+        <h3 class="step-title">{{ step.title }}</h3>
+        <p class="step-desc">{{ step.description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section reveal-on-scroll">
+    <div class="section-header">
+      <p class="section-eyebrow">Got Questions?</p>
+      <h2 class="section-title">Frequently asked questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.open]="faq.open" (click)="toggleFaq(i)">
+        <div class="faq-question">
+          <span>{{ faq.question }}</span>
+          <ion-icon [name]="faq.open ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+        </div>
+        <div class="faq-answer" *ngIf="faq.open">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="cta-section reveal-on-scroll">
+    <div class="cta-card">
+      <div class="cta-glow"></div>
+      <div class="cta-glow cta-glow-2"></div>
+      <div class="cta-badge">
+        <ion-icon name="diamond-outline"></ion-icon>
+        <span>No cost. No obligation.</span>
+      </div>
+      <h2>Ready to get your first qualified client?</h2>
+      <p>Book your free strategy call today and discover how Process Zero can fill your pipeline.</p>
+      <div class="cta-actions">
+        <button class="btn-primary" (click)="scrollToBooking()">
+          Book Free Strategy Call
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+      </div>
+      <div class="cta-reassurance">
+        <span><ion-icon name="shield-checkmark-outline"></ion-icon> No credit card required</span>
+        <span><ion-icon name="time-outline"></ion-icon> 30-minute call</span>
+        <span><ion-icon name="card-outline"></ion-icon> Zero risk</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-links">
+      <a class="footer-link" (click)="navigateTo('/help')">
+        <ion-icon name="book-outline"></ion-icon>
+        Help &amp; Guide
+      </a>
+      <span class="footer-dot">&middot;</span>
+      <a class="footer-link" (click)="navigateTo('/terms')">
+        <ion-icon name="document-text-outline"></ion-icon>
+        Terms of Use
+      </a>
+      <span class="footer-dot">&middot;</span>
+      <a class="footer-link" (click)="navigateTo('/privacy')">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        Privacy Policy
+      </a>
+      <span class="footer-dot">&middot;</span>
+      <a class="footer-link" href="https://cal.com/xhanti-mzozoyana-50g1ck/process-zero-risk-free-client-acquisition-and-lead-vetting" target="_blank" rel="noopener">
+        <ion-icon name="calendar-outline"></ion-icon>
+        Book on Cal.com
+      </a>
+    </div>
+    <p>&copy; 2026 Process Zero. All rights reserved.</p>
+  </footer>
+
+  <div class="scroll-indicator">
+    <ion-icon name="chevron-up-outline" class="scroll-icon"></ion-icon>
+    <span>Back to booking</span>
+  </div>
+</ion-content>
+

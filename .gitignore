@@ -1,0 +1,10 @@
+/node_modules
+/.pnpm
+/.angular
+/dist
+/out-tsc
+/coverage
+/www
+/.vercel_build_output
+/vercel.json
+.nvmrc

@@ -1,0 +1,1097 @@
+// ── Design tokens (identical to Process Zero main app) ──────
+$sand: #f6f1e8;
+$paper: #fffdf9;
+$ink: #172121;
+$muted: #607078;
+$gold: #d7a449;
+$teal: #1d7874;
+$blue: #335c67;
+$coral: #c06c52;
+$danger: #d94f4f;
+
+// ── Keyframe Animations (shared) ────────────────────────────
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heroSlideIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($teal, 0.4); }
+  50%      { box-shadow: 0 0 0 12px rgba($teal, 0); }
+}
+
+@keyframes pulseBadge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($gold, 0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba($gold, 0); }
+}
+
+@keyframes particleDrift {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  20%  { opacity: 0.6; }
+  100% { transform: translateY(-120px) translateX(30px); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.1); }
+}
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba($gold, 0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba($gold, 0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes urgencyPulse {
+  0%, 100% { border-color: rgba($coral, 0.3); }
+  50%      { border-color: rgba($coral, 0.7); }
+}
+
+@keyframes scrollIndicatorBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+// ── Scroll Reveal ───────────────────────────────────────────
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ── Page background ─────────────────────────────────────────
+.squeeze-page {
+  --background: radial-gradient(circle at top left, rgba($gold, 0.12), transparent 30%),
+    linear-gradient(180deg, #f8f3eb 0%, #f1ece4 46%, #ece7df 100%);
+  color: $ink;
+}
+
+// ── Navigation Bar ──────────────────────────────────────────
+.landing-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba($paper, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba($ink, 0.06);
+  padding: 0 20px;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+  height: 56px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: $ink;
+
+  ion-icon {
+    font-size: 1.3rem;
+    color: $teal;
+  }
+
+  span {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+}
+
+
+// ── Hero Section ──────────────────────────────────────────
+.hero {
+  position: relative;
+  padding: 60px 20px 48px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 280px;
+    background: radial-gradient(circle at top left, rgba($gold, 0.12), transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.hero-bg-glow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($teal, 0.15), transparent 60%);
+  top: -80px;
+  right: -80px;
+  z-index: 0;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.hero-glow-2 {
+  width: 280px;
+  height: 280px;
+  top: 120px;
+  left: -60px;
+  background: radial-gradient(circle, rgba($gold, 0.12), transparent 60%);
+  animation-delay: 1s;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba($gold, 0.4);
+    border-radius: 50%;
+    animation: particleDrift 12s linear infinite;
+
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}) {
+        left: #{random(100)}%;
+        top: #{random(100)}%;
+        animation-delay: #{-(random(12))}s;
+        width: #{3 + random(3)}px;
+        height: #{3 + random(3)}px;
+      }
+    }
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  animation: heroSlideIn 0.8s ease-out 0.1s both;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: $teal;
+  margin-bottom: 14px;
+  animation: badgePulse 2.2s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(215, 164, 73, 0.08);
+
+  ion-icon {
+    font-size: 1.05rem;
+    color: $teal;
+  }
+}
+
+.hero .eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $teal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 16px;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: $ink;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  letter-spacing: -0.5px;
+
+  .highlight {
+    color: $teal;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 2.1rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: $muted;
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+
+.hero-form-wrapper {
+  margin-top: 48px;
+  width: 100%;
+}
+
+
+// ── Trusted Badge ─────────────────────────────────────────
+.trusted-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+  padding: 0 12px;
+}
+
+.avatar-stack {
+  display: flex;
+  align-items: center;
+  gap: -6px;
+  margin-right: 4px;
+}
+
+.mini-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $teal, $blue);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $paper;
+  box-sizing: border-box;
+  z-index: 1;
+
+  &.more {
+    background: rgba($ink, 0.1);
+    color: $ink;
+    font-size: 0.65rem;
+  }
+}
+
+.trusted-text {
+  font-size: 0.85rem;
+  color: $muted;
+
+  strong {
+    color: $teal;
+    font-weight: 700;
+  }
+}
+
+.trusted-text {
+  font-size: 0.85rem;
+  color: $muted;
+
+  strong {
+    color: $teal;
+    font-weight: 700;
+  }
+}
+
+// ── Video Showcase ─────────────────────────────────────────
+.video-section {
+  position: relative;
+  padding: 56px 20px 64px;
+  background: linear-gradient(180deg, #f3eee6 0%, #efe9e0 100%);
+
+  .video-container {
+    max-width: 860px;
+    margin: 0 auto;
+
+    .video-wrapper {
+      width: 100%;
+      border: 1px solid rgba($teal, 0.18);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 44px rgba(19, 31, 31, 0.14);
+    }
+
+    .video-caption {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: $muted;
+      line-height: 1.5;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: radial-gradient(circle at center, rgba($teal, 0.09), transparent 35%);
+    pointer-events: none;
+  }
+}
+
+// ── Squeeze Card (Lead Capture Form) ──────────────────────
+.squeeze-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba($paper, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba($gold, 0.15);
+  box-shadow: 0 12px 40px rgba(19, 31, 31, 0.1);
+  padding: 36px 32px;
+  animation: fadeInScale 0.6s ease-out 0.2s both;
+
+  @media (max-width: 600px) {
+    padding: 28px 20px;
+  }
+}
+
+.squeeze-card-header {
+  text-align: center;
+  margin-bottom: 28px;
+
+  .squeeze-card-icon {
+    font-size: 2.4rem;
+    color: $teal;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $ink;
+    margin: 0 0 8px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $muted;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// ── Squeeze Form ───────────────────────────────────────────
+.squeeze-form {
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-group-half {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $ink;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    color: $ink;
+    background: rgba($sand, 0.5);
+    border: 1.5px solid rgba($muted, 0.2);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: rgba($muted, 0.5);
+    }
+
+    &:focus {
+      border-color: $teal;
+      box-shadow: 0 0 0 3px rgba($teal, 0.1);
+    }
+  }
+
+  .form-error {
+    font-size: 0.8rem;
+    color: $danger;
+    margin: 4px 0 0;
+    line-height: 1.3;
+  }
+
+  .checkbox-group {
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: $ink;
+      cursor: pointer;
+      line-height: 1.4;
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      .checkmark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba($muted, 0.4);
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex-shrink: 0;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid $teal;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+      }
+
+      input:checked + .checkmark {
+        background: linear-gradient(135deg, $teal, $blue);
+        border-color: transparent;
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      a {
+        color: $teal;
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// ── Primary Button (reused) ─────────────────────────────────
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, $teal, $blue);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 4px 14px rgba($teal, 0.25);
+
+  &:hover:not(:disabled) {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  ion-spinner {
+    width: 18px;
+    height: 18px;
+    color: #fff;
+  }
+}
+
+
+// ── Cal.com Embed Section ─────────────────────────────────
+.cal-section {
+  text-align: center;
+  width: 100%;
+  padding: 0;
+}
+
+.cal-thankyou {
+  margin-bottom: 24px;
+
+  .cal-thankyou-icon {
+    font-size: 3.2rem;
+    color: $teal;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $ink;
+    margin: 0 0 6px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $muted;
+    margin: 0;
+  }
+}
+
+.cal-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px;
+  color: $muted;
+  font-size: 0.9rem;
+}
+
+// ── Section Headers (shared pattern) ────────────────────────
+.section-header {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $teal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+}
+
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: $ink;
+  margin: 0 0 12px;
+  letter-spacing: -0.3px;
+}
+
+.section-subtitle {
+  font-size: 1.02rem;
+  color: $muted;
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+// ── Benefits Section ───────────────────────────────────────
+.benefits-section {
+  padding: 60px 20px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  background: rgba($paper, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba($ink, 0.05);
+  padding: 32px 28px;
+  box-shadow: 0 4px 24px rgba(19, 31, 31, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(19, 31, 31, 0.08);
+  }
+}
+
+.benefit-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba($teal, 0.12), rgba($blue, 0.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+
+  ion-icon {
+    font-size: 1.8rem;
+    color: $teal;
+  }
+}
+
+.benefit-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $ink;
+  margin: 0 0 8px;
+}
+
+.benefit-desc {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: $muted;
+  margin: 0;
+}
+
+// ── How It Works Section ────────────────────────────────────
+.how-it-works-section {
+  padding: 60px 20px;
+  background: rgba($sand, 0.3);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba($teal, 0.2),
+      rgba($teal, 0.2) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    z-index: 0;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+.step-card {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.step-number {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $teal, $blue);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba($teal, 0.25);
+  margin-bottom: 14px;
+  animation: countPop 2s ease-in-out infinite;
+}
+
+.step-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: $ink;
+  margin: 0 0 8px;
+}
+
+.step-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: $muted;
+  margin: 0;
+}
+
+
+// ── FAQ Section ───────────────────────────────────────────
+.fancybox-section {
+  padding: 60px 20px;
+}
+
+.faq-section {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: rgba($paper, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba($ink, 0.05);
+  box-shadow: 0 2px 12px rgba(19, 31, 31, 0.03);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4px 20px rgba(19, 31, 31, 0.06);
+  }
+
+  &.open {
+    box-shadow: 0 6px 24px rgba(19, 31, 31, 0.08);
+
+    .faq-question {
+      color: $teal;
+    }
+  }
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: $ink;
+  transition: color 0.2s;
+}
+
+.faq-answer {
+  padding: 0 22px 18px;
+
+  p {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: $muted;
+    margin: 0;
+  }
+}
+
+// ── CTA Section ───────────────────────────────────────────
+.cta-section {
+  padding: 60px 20px;
+}
+
+.cta-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: linear-gradient(140deg, rgba($ink, 0.97), rgba($blue, 0.92));
+  color: $sand;
+  border-radius: 24px;
+  padding: 52px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(19, 31, 31, 0.22);
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    right: -100px;
+    top: -130px;
+    background: radial-gradient(circle, rgba($gold, 0.4), transparent 66%);
+    pointer-events: none;
+  }
+}
+
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  position: relative;
+
+  ion-icon {
+    font-size: 0.95rem;
+  }
+}
+
+.cta-card h2 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: 0 0 10px;
+  position: relative;
+}
+
+.cta-card p {
+  font-size: 1rem;
+  color: rgba($sand, 0.75);
+  margin: 0 0 28px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.cta-actions {
+  position: relative;
+  margin-bottom: 24px;
+
+  .btn-primary {
+    max-width: 320px;
+    margin: 0 auto;
+    font-size: 1.02rem;
+    padding: 16px 24px;
+  }
+}
+
+.cta-reassurance {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  position: relative;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+
+    ion-icon {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+// ── Footer (shared pattern) ──────────────────────────────
+.landing-footer {
+  text-align: center;
+  padding: 24px 18px 36px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: $teal;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+
+  ion-icon {
+    font-size: 1.05rem;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer-dot {
+  color: $muted;
+  font-size: 0.9rem;
+}
+
+.landing-footer p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: $muted;
+}
+
+// ── Scroll Indicator ──────────────────────────────────────
+.scroll-indicator {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: $muted;
+  z-index: 80;
+  animation: scrollIndicatorBounce 2s ease-in-out infinite;
+
+  .scroll-icon {
+    font-size: 1.2rem;
+    color: $teal;
+  }
+}
+
+// ── Responsive ────────────────────────────────────────────
+@media (max-width: 600px) {
+  .nav-brand span {
+    display: none;
+  }
+
+  .nav-link {
+    font-size: 0;
+    padding: 8px;
+
+    ion-icon {
+      font-size: 1.2rem;
+    }
+  }
+
+  .hero {
+    padding: 40px 18px 32px;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-form-wrapper {
+    padding: 0 12px;
+  }
+
+  .squeeze-card {
+    padding: 26px 18px;
+  }
+
+  .benefits-section {
+    padding: 48px 16px;
+  }
+
+  .how-it-works-section {
+    padding: 48px 16px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .faq-section {
+    padding: 48px 16px;
+  }
+
+  .cta-section {
+    padding: 48px 16px;
+  }
+
+  .cta-card {
+    padding: 40px 20px;
+  }
+
+  .cta-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .cta-reassurance {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .trusted-badge {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+

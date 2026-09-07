@@ -1,0 +1,1 @@
+Set-Location 'd:\Users\Xhanti Mzozoyana\Documents\ProcessZeroWorkspace\ui\process-zero-squeeze'; Start-Process -FilePath 'cmd.exe' -ArgumentList '/c', 'npx ng serve --port 4201 -o > serve.log 2>&1' -WorkingDirectory (Get-Location) -WindowStyle Hidden; Write-Output 'started'
