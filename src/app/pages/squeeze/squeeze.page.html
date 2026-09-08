@@ -82,21 +82,6 @@
         <span class="trusted-text"><strong>500+</strong> sales meetings booked for our clients</span>
       </div>
     </div>
-
-    <!-- Cal.com Booking Embed (full width) -->
-    <div class="hero-form-wrapper">
-      <div class="cal-section">
-        <div class="cal-embed-wrapper" #calEmbedContainer>
-          <div class="cal-loading">
-            <ion-spinner name="crescent" color="medium"></ion-spinner>
-            <span>Loading calendar…</span>
-          </div>
-          <!-- Cal inline embed target -->
-          <div style="width:100%;height:100%;overflow:scroll"
-               id="my-cal-inline-process-zero-risk-free-client-acquisition-and-lead-vetting"></div>
-        </div>
-      </div>
-    </div>
   </section>
 
 <!-- Video Showcase -->
@@ -133,6 +118,33 @@
     </div>
   </section>
 
+  <!-- Testimonials (Social Proof) -->
+  <section class="testimonials-section reveal-on-scroll">
+    <div class="section-header">
+      <p class="section-eyebrow">Client Results</p>
+      <h2 class="section-title">What business owners say after their first 14 days</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let t of testimonials">
+        <div class="testimonial-stars">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div>
+        <p class="testimonial-quote">"{{ t.quote }}"</p>
+        <div class="testimonial-author">
+          <span class="testimonial-avatar">{{ t.initials }}</span>
+          <div>
+            <strong>{{ t.name }}</strong>
+            <span>{{ t.role }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- How It Works Section -->
   <section class="how-it-works-section reveal-on-scroll">
     <div class="section-header">
@@ -164,6 +176,26 @@
         <div class="faq-answer" *ngIf="faq.open">
           <p>{{ faq.answer }}</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section (single CTA — after the full story) -->
+  <section class="booking-section reveal-on-scroll" id="book">
+    <div class="section-header">
+      <p class="section-eyebrow">Your Move</p>
+      <h2 class="section-title">Pick a time for your free call</h2>
+      <p class="section-subtitle">30 seconds. Free for 14 days — no credit card, no contract, no invoicing.</p>
+    </div>
+    <div class="booking-wrapper">
+      <div class="cal-embed-wrapper" #calEmbedContainer>
+        <div class="cal-loading">
+          <ion-spinner name="crescent" color="medium"></ion-spinner>
+          <span>Loading calendar…</span>
+        </div>
+        <!-- Cal inline embed target -->
+        <div style="width:100%;height:100%;overflow:scroll"
+             id="my-cal-inline-process-zero-risk-free-client-acquisition-and-lead-vetting"></div>
       </div>
     </div>
   </section>

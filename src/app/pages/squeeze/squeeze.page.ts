@@ -51,6 +51,13 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
     { value: 'R0', label: 'To Start — 14 Days Free' },
   ];
 
+  /** Client testimonials (replace with real client quotes before scaling ad spend). */
+  testimonials = [
+    { quote: 'I stopped cold calling completely. My calendar fills itself now and I just show up and close.', initials: 'TM', name: 'Thabo M.', role: 'Business Owner' },
+    { quote: 'Within the first two weeks I met three buyers who were ready to sign. I only pay when meetings actually happen.', initials: 'LK', name: 'Lerato K.', role: 'Sales Director' },
+    { quote: 'The 14 free days sold me. No card, no contract — and they still booked meetings before I paid a cent.', initials: 'JO', name: 'James O.', role: 'Founder' },
+  ];
+
   private observer: IntersectionObserver | null = null;
   private calCleanupFn: (() => void) | null = null;
 
