@@ -8,3 +8,4 @@
 /.vercel_build_output
 /vercel.json
 .nvmrc
+serve.log
