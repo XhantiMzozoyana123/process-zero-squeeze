@@ -38,13 +38,20 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
     this.router.navigateByUrl(path);
   }
 
-  /** CTA click: first reveal the quick form, then (after submit) open Cal.com. */
+  /** CTA click: first show the quick form modal, then (after submit) open Cal.com. */
   bookCall(): void {
     if (this.submitted) {
       window.open(CAL_BOOKING_URL, '_blank', 'noopener');
       return;
     }
     this.showForm = true;
+  }
+
+  /** Dismiss the lead-capture modal. */
+  closeForm(): void {
+    if (this.submitting) return;
+    this.showForm = false;
+    this.errorMessage = '';
   }
 
   /** Save the lead into the LeadLake table, then open the booking calendar. */

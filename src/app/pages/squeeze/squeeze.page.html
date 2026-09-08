@@ -78,21 +78,6 @@
       </div>
       <p class="cta-micro">Free for 14 days &middot; takes 30 seconds &middot; you can cancel any time</p>
 
-      <!-- Lead capture form (revealed on CTA click) -->
-      <div class="lead-form" *ngIf="showForm && !submitted">
-        <p class="lead-form-title">Where should we send your customers?</p>
-        <input class="lead-input" type="text" placeholder="First name" [(ngModel)]="firstName" [disabled]="submitting" />
-        <input class="lead-input" type="text" placeholder="Last name (optional)" [(ngModel)]="lastName" [disabled]="submitting" />
-        <input class="lead-input" type="email" placeholder="Email" [(ngModel)]="email" [disabled]="submitting" />
-        <input class="lead-input" type="tel" placeholder="Phone (optional)" [(ngModel)]="phone" [disabled]="submitting" />
-        <!-- Honeypot: hidden from humans -->
-        <input class="lead-honeypot" type="text" [(ngModel)]="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <p class="lead-error" *ngIf="errorMessage">{{ errorMessage }}</p>
-        <button class="btn-primary lead-submit" (click)="submitLead()" [disabled]="submitting">
-          {{ submitting ? 'Saving…' : 'Save & Book My Free Call' }}
-        </button>
-        <p class="lead-privacy">We only use this to contact you about your free trial. No spam.</p>
-      </div>
       <div class="lead-success" *ngIf="submitted">
         <ion-icon name="checkmark-circle-outline"></ion-icon>
         <span>You're in! The booking calendar just opened in a new tab — pick a time for your free call.</span>
@@ -139,5 +124,24 @@
     <p>&copy; 2026 Process Zero. All rights reserved.</p>
   </footer>
 
+  <!-- Lead Capture Modal -->
+  <div class="lead-modal-backdrop" *ngIf="showForm && !submitted" (click)="closeForm()"></div>
+  <div class="lead-modal" *ngIf="showForm && !submitted" role="dialog" aria-modal="true">
+    <button class="lead-modal-close" (click)="closeForm()" aria-label="Close" [disabled]="submitting">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+    <p class="lead-form-title">Where should we send your customers?</p>
+    <input class="lead-input" type="text" placeholder="First name" [(ngModel)]="firstName" [disabled]="submitting" />
+    <input class="lead-input" type="text" placeholder="Last name (optional)" [(ngModel)]="lastName" [disabled]="submitting" />
+    <input class="lead-input" type="email" placeholder="Email" [(ngModel)]="email" [disabled]="submitting" />
+    <input class="lead-input" type="tel" placeholder="Phone (optional)" [(ngModel)]="phone" [disabled]="submitting" />
+    <!-- Honeypot: hidden from humans -->
+    <input class="lead-honeypot" type="text" [(ngModel)]="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <p class="lead-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <button class="btn-primary lead-submit" (click)="submitLead()" [disabled]="submitting">
+      {{ submitting ? 'Saving…' : 'Save & Book My Free Call' }}
+    </button>
+    <p class="lead-privacy">We only use this to contact you about your free trial. No spam.</p>
+  </div>
 </ion-content>
 
