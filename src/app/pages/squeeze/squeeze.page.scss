@@ -357,18 +357,20 @@ $danger: #d94f4f;
   }
 }
 
-  /* Guarantee banner under the subtitle */
-  .hero-guarantee {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    max-width: 560px;
-    margin: 0 auto 18px;
-    padding: 12px 18px;
-    background: rgba(20, 184, 166, 0.08);
-    border: 1px solid rgba(20, 184, 166, 0.35);
-    border-radius: 12px;
-    text-align: left;
+/* Guarantee banner under the subtitle — deliberately NOT button-like */
+.hero-guarantee {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 560px;
+  margin: 0 auto 18px;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  border-top: 2px dashed rgba(20, 184, 166, 0.35);
+  border-bottom: 2px dashed rgba(20, 184, 166, 0.35);
+  border-radius: 0;
+  text-align: left;
 
     ion-icon {
       flex-shrink: 0;
@@ -1241,7 +1243,7 @@ $danger: #d94f4f;
   }
 
   .hero-guarantee {
-    padding: 10px 14px;
+    padding: 10px 0;
     gap: 8px;
     margin-bottom: 14px;
 
