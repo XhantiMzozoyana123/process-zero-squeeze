@@ -357,6 +357,23 @@ $danger: #d94f4f;
   }
 }
 
+/* Compact hero video — small, centered, above the guarantee */
+.hero-video {
+  position: relative;
+  z-index: 2;
+  max-width: 380px;
+  margin: 18px auto 16px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba($ink, 0.12);
+  box-shadow: 0 8px 24px rgba($ink, 0.12);
+
+  iframe {
+    display: block;
+    border-radius: 14px;
+  }
+}
+
 /* Guarantee banner under the subtitle — deliberately NOT button-like */
 .hero-guarantee {
   display: flex;
