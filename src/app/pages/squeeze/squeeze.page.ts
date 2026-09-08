@@ -117,7 +117,7 @@ Cal.config.forwardQueryParams = true;
     calLink: "${environment.cal.embedLink}",
   });
 
-  Cal.ns["process-zero-risk-free-client-acquisition-and-lead-vetting"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});`;
+  Cal.ns["process-zero-risk-free-client-acquisition-and-lead-vetting"]("ui", {"hideEventTypeDetails":true,"layout":"month_view"});`;
 
     this.renderer.appendChild(container, script);
 
