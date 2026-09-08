@@ -22,17 +22,17 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
   
   /** Benefit cards shown in the value proposition section. */
   benefits = [
-    { icon: 'time-outline', title: 'Get Your Week Back', description: 'No cold calls. No chasing people who never reply. We do all of that for you.' },
-    { icon: 'people-outline', title: 'Only Real Buyers', description: 'Everyone we book needs what you sell, can afford it, and can say yes. No time-wasters.' },
-    { icon: 'calendar-outline', title: 'A Full Calendar', description: 'New meetings with interested buyers, added to your calendar every month.' },
-    { icon: 'shield-checkmark-outline', title: 'Zero Risk', description: 'Free for 14 days. No credit card, no contract, no invoicing. No catch — just results.' },
+    { icon: 'trending-up-outline', title: 'More Money In', description: 'New paying customers every month, without you spending a cent on ads or a minute on cold calls.' },
+    { icon: 'people-outline', title: 'Only Real Buyers', description: 'Everyone we bring you needs what you sell, can afford it, and can say yes. No time-wasters.' },
+    { icon: 'time-outline', title: 'Get Your Week Back', description: 'Stop hunting for customers. Spend your time serving the ones we bring you.' },
+    { icon: 'shield-checkmark-outline', title: 'Zero Risk', description: 'Free for 14 days. No credit card, no contract, no invoicing. No catch — just customers.' },
   ];
 
   /** How-it-works steps. */
   howItWorks = [
-    { step: '1', title: 'Book the Free Call', description: 'Pick a time below. Takes 30 seconds. Free for 14 days — no card needed.' },
-    { step: '2', title: 'We Go Find Your Buyers', description: 'Tell us your perfect customer on the call. Our team reaches out, tests every lead, and filters out the time-wasters.' },
-    { step: '3', title: 'Buyers Land in Your Calendar', description: 'We book the serious ones in and send reminders. You show up and close.' },
+    { step: '1', title: 'Claim Your Free 14 Days', description: 'Book the free call below. No credit card, no contract, no invoicing.' },
+    { step: '2', title: 'We Go Find Your Customers', description: 'Tell us who your perfect customer is. Our team finds them, talks to them, and checks they are ready to buy.' },
+    { step: '3', title: 'You Get New Customers', description: 'Ready-to-buy customers land in your calendar. You meet them, win them, and grow.' },
   ];
 
   /** FAQ accordion items. */
