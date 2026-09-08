@@ -1,7 +1,9 @@
 import { Component, AfterViewInit, OnDestroy, ElementRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
-/** Cal.com booking page (opens in a new tab from the CTA). */
+/** Cal.com booking page (opens in a new tab after the lead is saved). */
 const CAL_BOOKING_URL =
   'https://cal.com/xhanti-mzozoyana-50g1ck/process-zero-risk-free-client-acquisition-and-lead-vetting';
 
@@ -12,19 +14,74 @@ const CAL_BOOKING_URL =
   standalone: false,
 })
 export class SqueezePage implements AfterViewInit, OnDestroy {
+  /** Lead-capture form state — shown when the visitor clicks the CTA. */
+  showForm = false;
+  submitting = false;
+  submitted = false;
+  errorMessage = '';
+
+  firstName = '';
+  lastName = '';
+  email = '';
+  phone = '';
+  /** Honeypot — must stay empty. Bots fill it; humans never see it. */
+  website = '';
+
   constructor(
     private router: Router,
     private el: ElementRef,
     private zone: NgZone,
+    private http: HttpClient,
   ) {}
 
   navigateTo(path: string): void {
     this.router.navigateByUrl(path);
   }
 
-  /** Open the Cal.com booking page in a new tab. */
+  /** CTA click: first reveal the quick form, then (after submit) open Cal.com. */
   bookCall(): void {
-    window.open(CAL_BOOKING_URL, '_blank', 'noopener');
+    if (this.submitted) {
+      window.open(CAL_BOOKING_URL, '_blank', 'noopener');
+      return;
+    }
+    this.showForm = true;
+  }
+
+  /** Save the lead into the LeadLake table, then open the booking calendar. */
+  submitLead(): void {
+    if (this.submitting) return;
+
+    if (!this.firstName.trim() || !this.email.trim()) {
+      this.errorMessage = 'Please fill in your name and email.';
+      return;
+    }
+
+    this.submitting = true;
+    this.errorMessage = '';
+
+    this.http
+      .post(`${environment.apiUrl}/LeadLake/lead-capture`, {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        phone: this.phone,
+        website: this.website, // honeypot
+      })
+      .subscribe({
+        next: () => {
+          this.zone.run(() => {
+            this.submitting = false;
+            this.submitted = true;
+          });
+          window.open(CAL_BOOKING_URL, '_blank', 'noopener');
+        },
+        error: () => {
+          this.zone.run(() => {
+            this.submitting = false;
+            this.errorMessage = 'Something went wrong — please try again.';
+          });
+        },
+      });
   }
 
   private observer: IntersectionObserver | null = null;

@@ -1371,3 +1371,107 @@ $danger: #d94f4f;
   }
 }
 
+
+// -- Lead Capture Form (revealed on CTA click) -------------
+.lead-form {
+  max-width: 420px;
+  margin: 18px auto 0;
+  padding: 18px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba($gold, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba($ink, 0.08);
+  text-align: left;
+}
+
+.lead-form-title {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: $ink;
+  text-align: center;
+}
+
+.lead-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border: 1px solid rgba($ink, 0.18);
+  border-radius: 10px;
+  background: #fff;
+  color: $ink;
+
+  &:focus {
+    outline: none;
+    border-color: $teal;
+    box-shadow: 0 0 0 3px rgba($teal, 0.15);
+  }
+
+  &::placeholder {
+    color: $muted;
+  }
+}
+
+.lead-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lead-error {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #c0392b;
+  text-align: center;
+}
+
+.lead-submit {
+  width: 100%;
+}
+
+.lead-privacy {
+  margin: 10px 0 0;
+  font-size: 0.75rem;
+  color: $muted;
+  text-align: center;
+}
+
+.lead-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 460px;
+  margin: 16px auto 0;
+  padding: 12px 16px;
+  background: rgba($teal, 0.1);
+  border: 1px solid rgba($teal, 0.4);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: $teal;
+
+  ion-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .lead-form {
+    padding: 14px 12px;
+    border-radius: 14px;
+  }
+
+  .lead-input {
+    padding: 11px 12px;
+    font-size: 1rem; // 16px prevents iOS zoom-on-focus
+  }
+}

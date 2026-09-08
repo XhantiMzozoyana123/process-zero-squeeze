@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
