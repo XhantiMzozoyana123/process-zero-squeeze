@@ -46,32 +46,29 @@
       <div class="hero-guarantee">
         <ion-icon name="shield-checkmark-outline"></ion-icon>
         <span>
-          <strong>Try it free for 14 days.</strong> No credit card. If we don't book
-          meetings, you pay nothing. You can't lose.
+          <strong>Completely FREE for 14 days.</strong> No credit card. No contract.
+          No invoicing. No catch — just results.
         </span>
       </div>
 
       <!-- Offer bullets (mirror the ad) -->
       <ul class="hero-bullets">
         <li><ion-icon name="gift-outline"></ion-icon> Free for 14 days</li>
-        <li><ion-icon name="close-circle-outline"></ion-icon> No credit card needed</li>
-        <li><ion-icon name="cash-outline"></ion-icon> No money upfront</li>
-        <li><ion-icon name="calendar-outline"></ion-icon> Pay only for meetings we book</li>
+        <li><ion-icon name="close-circle-outline"></ion-icon> No credit card</li>
+        <li><ion-icon name="document-outline"></ion-icon> No contract</li>
+        <li><ion-icon name="receipt-outline"></ion-icon> No invoicing</li>
       </ul>
 
-      <!-- Primary CTA (Action) -->
+      <!-- Single CTA (Action) -->
       <div class="hero-cta">
         <button class="btn-primary" (click)="bookCall()">
-          Claim My 14 Free Days
+          Book the Free Call
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
-        <button class="btn-ghost" (click)="scrollToVideo()">
-          <ion-icon name="play-circle-outline"></ion-icon>
-          See How It Works
-        </button>
       </div>
+      <p class="cta-micro">Free for 14 days &middot; takes 30 seconds &middot; you can cancel any time</p>
 
-      <p class="hero-tagline">No contracts. No monthly fees. Just meetings.</p>
+      <p class="hero-tagline">No catch. Just buyers on your calendar.</p>
 
       <!-- Trusted Stats -->
       <div class="trusted-badge">
@@ -121,7 +118,7 @@
     <div class="section-header">
       <p class="section-eyebrow">Proof It Works</p>
       <h2 class="section-title">Imagine opening your calendar and it's already full</h2>
-      <p class="section-subtitle">That's what we do. We do all the hard work — you just show up to meetings with people who are ready to buy.</p>
+      <p class="section-subtitle">Free for 14 days — no credit card, no contract, no invoicing. We do all the hard work; you just show up and close.</p>
     </div>
     <div class="benefits-grid">
                   <div class="benefit-card" *ngFor="let b of benefits; let i = index">
@@ -140,8 +137,8 @@
   <section class="how-it-works-section reveal-on-scroll">
     <div class="section-header">
       <p class="section-eyebrow">Simple Process</p>
-      <h2 class="section-title">You could be closing deals by next week</h2>
-      <p class="section-subtitle">Five simple steps between you and a full calendar. Most clients meet their first buyer within 14 days.</p>
+      <h2 class="section-title">Buyers on your calendar in 3 easy steps</h2>
+      <p class="section-subtitle">Free for 14 days. No credit card, no contract, no invoicing — no catch, just results.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card" *ngFor="let step of howItWorks">
@@ -181,17 +178,17 @@
         <span>No cost. No obligation.</span>
       </div>
       <h2>Every day without meetings is a day without sales.</h2>
-      <p>Your first 14 days are free — no credit card. Pick a time below, and let's get buyers onto your calendar this week. If we don't book, you don't pay.</p>
+      <p>The next 14 days are completely free. No credit card, no contract, no invoicing — no catch, just results. Book your free call below and let's get buyers onto your calendar this week.</p>
       <div class="cta-actions">
         <button class="btn-primary" (click)="scrollToBooking()">
-          Claim My 14 Free Days
+          Book the Free Call
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
       </div>
       <div class="cta-reassurance">
-        <span><ion-icon name="shield-checkmark-outline"></ion-icon> No credit card required</span>
-        <span><ion-icon name="time-outline"></ion-icon> 30-minute call</span>
-        <span><ion-icon name="card-outline"></ion-icon> If we don't book, you don't pay</span>
+        <span><ion-icon name="gift-outline"></ion-icon> Free for 14 days</span>
+        <span><ion-icon name="close-circle-outline"></ion-icon> No credit card</span>
+        <span><ion-icon name="shield-checkmark-outline"></ion-icon> No catch — just results</span>
       </div>
     </div>
   </section>
@@ -225,15 +222,10 @@
   <!-- Sticky Mobile CTA -->
   <div class="sticky-cta">
     <div class="sticky-cta-text">
-      <strong>14 days free — no card</strong>
-      <span>We book the meetings. You close the deals.</span>
+      <strong>Free for 14 days</strong>
+      <span>No card. No contract. No catch.</span>
     </div>
-    <button class="btn-primary sticky-cta-btn" (click)="scrollToBooking()">Claim Free Trial</button>
-  </div>
-
-  <div class="scroll-indicator">
-    <ion-icon name="chevron-up-outline" class="scroll-icon"></ion-icon>
-    <span>Back to booking</span>
+    <button class="btn-primary sticky-cta-btn" (click)="scrollToBooking()">Book the Free Call</button>
   </div>
 </ion-content>
 
