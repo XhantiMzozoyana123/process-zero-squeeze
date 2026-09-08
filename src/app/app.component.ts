@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { inject } from '@vercel/analytics';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,11 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // Start collecting Vercel Web Analytics views for the squeeze page.
-    // Framework-agnostic integration (this app is Angular, not Next.js).
-    inject();
+    // Initialize Vercel Web Analytics with proper configuration
+    // Framework-agnostic integration for Angular/Ionic applications
+    inject({
+      mode: environment.production ? 'production' : 'development',
+      debug: !environment.production, // Enable debug logging in development
+    });
   }
 }
