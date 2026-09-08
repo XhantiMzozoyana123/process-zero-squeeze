@@ -1,6 +1,9 @@
-import { Component, AfterViewInit, OnDestroy, ElementRef, NgZone, Renderer2, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ElementRef, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+
+/** Cal.com booking page (opens in a new tab from the CTA). */
+const CAL_BOOKING_URL =
+  'https://cal.com/xhanti-mzozoyana-50g1ck/process-zero-risk-free-client-acquisition-and-lead-vetting';
 
 @Component({
   selector: 'app-squeeze',
@@ -9,134 +12,29 @@ import { environment } from 'src/environments/environment';
   standalone: false,
 })
 export class SqueezePage implements AfterViewInit, OnDestroy {
-  /** Whether the Cal.com embed script has already been loaded. */
-  calScriptLoaded = false;
-
   constructor(
     private router: Router,
     private el: ElementRef,
     private zone: NgZone,
-    private renderer: Renderer2,
   ) {}
 
-  
-  /** Benefit cards shown in the value proposition section. */
-  benefits = [
-    { icon: 'trending-up-outline', title: 'More Money In', description: 'New paying customers every month, without you spending a cent on ads or a minute on cold calls.' },
-    { icon: 'people-outline', title: 'Only Real Buyers', description: 'Everyone we bring you needs what you sell, can afford it, and can say yes. No time-wasters.' },
-    { icon: 'time-outline', title: 'Get Your Week Back', description: 'Stop hunting for customers. Spend your time serving the ones we bring you.' },
-    { icon: 'shield-checkmark-outline', title: 'Zero Risk', description: 'Free for 14 days. No credit card, no contract, no invoicing. No catch — just customers.' },
-  ];
-
-  /** How-it-works steps. */
-  howItWorks = [
-    { step: '1', title: 'Claim Your Free 14 Days', description: 'Book the free call below. No credit card, no contract, no invoicing.' },
-    { step: '2', title: 'We Go Find Your Customers', description: 'Tell us who your perfect customer is. Our team finds them, talks to them, and checks they are ready to buy.' },
-    { step: '3', title: 'You Get New Customers', description: 'Ready-to-buy customers land in your calendar. You meet them, win them, and grow.' },
-  ];
-
-  /** FAQ accordion items. */
-  faqs = [
-    { question: 'Is it really free?', answer: 'Yes. Your first 14 days are completely free. No credit card, no contract, no invoicing. If we don\'t book meetings for you, you pay nothing at all.', open: false },
-    { question: 'What exactly do you do?', answer: 'We book sales meetings for you. You tell us the type of customer you want, and our team finds people who are ready to buy, checks they are a good fit, and puts them in your calendar.', open: false },
-    { question: 'Do I have to find the leads myself?', answer: 'No. We do everything — finding people, contacting them, checking they are a good fit, and booking the calls. All you do is show up to the meetings and close.', open: false },
-    { question: 'How soon will I get my first meeting?', answer: 'Most clients meet their first buyer within two weeks. We move fast and keep your calendar full month after month.', open: false },
-  ];
-
-  /** Social proof / trust stats. */
-  trustStats = [
-    { value: '500+', label: 'Meetings Booked for Clients' },
-    { value: '95%', label: 'Of Booked Buyers Show Up' },
-    { value: '14 Days', label: 'To Your First Meeting' },
-    { value: 'R0', label: 'To Start — 14 Days Free' },
-  ];
-
-  /** Client testimonials (replace with real client quotes before scaling ad spend). */
-  testimonials = [
-    { quote: 'I stopped cold calling completely. My calendar fills itself now and I just show up and close.', initials: 'TM', name: 'Thabo M.', role: 'Business Owner' },
-    { quote: 'Within the first two weeks I met three buyers who were ready to sign. I only pay when meetings actually happen.', initials: 'LK', name: 'Lerato K.', role: 'Sales Director' },
-    { quote: 'The 14 free days sold me. No card, no contract — and they still booked meetings before I paid a cent.', initials: 'JO', name: 'James O.', role: 'Founder' },
-  ];
-
-  private observer: IntersectionObserver | null = null;
-  private calCleanupFn: (() => void) | null = null;
-
-  @ViewChild('calEmbedContainer', { static: false }) calEmbedContainer!: ElementRef;
-
-  
   navigateTo(path: string): void {
     this.router.navigateByUrl(path);
   }
 
-  /** Trigger the booking flow — scrolls to the Cal.com inline embed. */
+  /** Open the Cal.com booking page in a new tab. */
   bookCall(): void {
-    this.scrollToBooking();
+    window.open(CAL_BOOKING_URL, '_blank', 'noopener');
   }
 
-  /** Smooth-scroll to the video showcase section. */
-  scrollToVideo(): void {
-    const section = this.el.nativeElement.querySelector('.video-section');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  /** Smooth-scroll back up to the Cal.com booking embed at the top of the page. */
-  scrollToBooking(): void {
-    const container = this.el.nativeElement.querySelector('.cal-embed-wrapper');
-    if (container) {
-      container.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-
-  toggleFaq(index: number): void {
-    this.faqs[index].open = !this.faqs[index].open;
-  }
-
-  /**
-   * Programmatically inject the Cal.com inline embed snippet into the container.
-   * Uses the official Cal.com inline embed code (calendar renders straight into the target div).
-   */
-  private loadCalEmbed(): void {
-    if (this.calScriptLoaded || !this.calEmbedContainer) {
-      return;
-    }
-
-    this.calScriptLoaded = true;
-    const container = this.calEmbedContainer.nativeElement;
-
-    const script = this.renderer.createElement('script');
-    script.type = 'text/javascript';
-    script.textContent = `(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "process-zero-risk-free-client-acquisition-and-lead-vetting", {origin:"https://app.cal.com"});
-Cal.config = Cal.config || {};
-Cal.config.forwardQueryParams = true;
-
-  Cal.ns["process-zero-risk-free-client-acquisition-and-lead-vetting"]("inline", {
-    elementOrSelector:"#my-cal-inline-process-zero-risk-free-client-acquisition-and-lead-vetting",
-    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
-    calLink: "${environment.cal.embedLink}",
-  });
-
-  Cal.ns["process-zero-risk-free-client-acquisition-and-lead-vetting"]("ui", {"hideEventTypeDetails":true,"layout":"month_view"});`;
-
-    this.renderer.appendChild(container, script);
-
-    this.calCleanupFn = () => {
-      if (script.parentNode) {
-        this.renderer.removeChild(container, script);
-      }
-    };
-  }
+  private observer: IntersectionObserver | null = null;
 
   ngAfterViewInit(): void {
     this.setupScrollAnimations();
-    setTimeout(() => this.loadCalEmbed(), 200);
   }
 
   ngOnDestroy(): void {
     this.observer?.disconnect();
-    this.calCleanupFn?.();
   }
 
   /** IntersectionObserver-based scroll reveal (same pattern as the home page). */
@@ -158,6 +56,3 @@ Cal.config.forwardQueryParams = true;
     });
   }
 }
-
-
-
