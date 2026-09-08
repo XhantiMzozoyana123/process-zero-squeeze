@@ -1254,64 +1254,6 @@ $danger: #d94f4f;
   }
 }
 
-// ── Sticky Mobile CTA ─────────────────────────────────────
-.sticky-cta {
-  display: none; // desktop: hidden — the hero CTA is always in reach
-}
-
-@media (max-width: 600px) {
-  .sticky-cta {
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-    z-index: 90;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 12px 10px 16px;
-    border-radius: 16px;
-    background: linear-gradient(140deg, rgba($ink, 0.97), rgba($blue, 0.94));
-    border: 1px solid rgba($gold, 0.35);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(8px);
-  }
-
-  .sticky-cta-text {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-
-    strong {
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: $sand;
-      line-height: 1.2;
-    }
-
-    span {
-      font-size: 0.72rem;
-      color: rgba($sand, 0.7);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-  .sticky-cta-btn {
-    flex-shrink: 0;
-    padding: 12px 18px;
-    font-size: 0.9rem;
-    border-radius: 12px;
-  }
-
-  // Keep the footer links clear of the fixed bar
-  .landing-footer {
-    padding-bottom: 96px;
-  }
-}
-
 // ── Hero Offer Bullets (mirror the ad) ────────────────────
 // (moved into the hero section styles above)
 
