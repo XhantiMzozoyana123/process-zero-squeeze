@@ -28,19 +28,31 @@
     </div>
     <div class="hero-content hero-animate">
       <div class="hero-badge">
-        <ion-icon name="shield-checkmark-outline"></ion-icon>
-        <span>Zero Risk — Book a Free Strategy Call</span>
+        <ion-icon name="people-outline"></ion-icon>
+        <span>Pre-Qualified Appointments</span>
       </div>
-      <p class="eyebrow">Strategy Call</p>
+      <p class="eyebrow">Appointment Setting</p>
       <h1 class="hero-title">
-        Risk-Free Client Acquisition<br />
-        <span class="highlight">& Lead Vetting</span>
+        High-Quality, Pre-Qualified<br />
+        <span class="highlight">Appointments for Your Clients</span>
       </h1>
       <p class="hero-subtitle">
-        Book a no-cost strategy call with Xhanti Mzozoyana to discover how Process Zero delivers
-        warm, pre-vetted opportunities to your pipeline — no cold outreach, no product development,
-                no inventory. Just selling.
+        Book a free strategy call with Xhanti Mzozoyana to see how Process Zero fills your
+        calendar with vetted decision-makers ready to talk — budget, authority, need, and
+        timeline all confirmed before we book.
       </p>
+
+      <!-- Primary CTA -->
+      <div class="hero-cta">
+        <button class="btn-primary" (click)="bookCall()">
+          Book Free Strategy Call
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+        <button class="btn-ghost" (click)="scrollToVideo()">
+          <ion-icon name="play-circle-outline"></ion-icon>
+          See How It Works
+        </button>
+      </div>
 
       <!-- Trusted Stats -->
       <div class="trusted-badge">
@@ -51,7 +63,7 @@
           <span class="mini-avatar">NS</span>
           <span class="mini-avatar more">+496</span>
         </div>
-        <span class="trusted-text">Trusted by <strong>500+</strong> sales reps across South Africa</span>
+        <span class="trusted-text">Delivered <strong>500+</strong> pre-qualified appointments for our clients</span>
       </div>
     </div>
 
@@ -76,13 +88,13 @@
      <div class="video-container">
        <div class="video-wrapper">
          <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%">
-           <iframe allow="fullscreen" allowfullscreen height="100%"
+           <iframe allow="fullscreen" allowfullscreen height="100%" loading="lazy"
                    src="https://streamable.com/e/gn9c0c?" width="100%"
                    style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;">
            </iframe>
          </div>
        </div>
-       <p class="video-caption">Watch how Process Zero delivers warm, pre-vetted opportunities to your pipeline</p>
+       <p class="video-caption">Watch how Process Zero books pre-qualified appointments straight into your calendar</p>
      </div>
    </section>
 
@@ -90,7 +102,7 @@
     <div class="section-header">
       <p class="section-eyebrow">Why Process Zero</p>
       <h2 class="section-title">Risk-free growth, guaranteed</h2>
-      <p class="section-subtitle">We remove every barrier between you and your next qualified client.</p>
+      <p class="section-subtitle">Everything is handled for you — you just show up to pre-qualified appointments ready to buy.</p>
     </div>
     <div class="benefits-grid">
                   <div class="benefit-card" *ngFor="let b of benefits; let i = index">
@@ -109,8 +121,8 @@
   <section class="how-it-works-section reveal-on-scroll">
     <div class="section-header">
       <p class="section-eyebrow">Simple Process</p>
-      <h2 class="section-title">From call to first sale in days</h2>
-      <p class="section-subtitle">Everything is designed to get you earning recurring commissions as fast as possible.</p>
+      <h2 class="section-title">From strategy call to booked appointments in days</h2>
+      <p class="section-subtitle">A simple, done-for-you process that keeps your calendar full of qualified meetings.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card" *ngFor="let step of howItWorks">
@@ -149,8 +161,8 @@
         <ion-icon name="diamond-outline"></ion-icon>
         <span>No cost. No obligation.</span>
       </div>
-      <h2>Ready to get your first qualified client?</h2>
-      <p>Book your free strategy call today and discover how Process Zero can fill your pipeline.</p>
+      <h2>Ready to fill your calendar with qualified appointments?</h2>
+      <p>Book your free strategy call today and see exactly how Process Zero delivers pre-qualified meetings to your business.</p>
       <div class="cta-actions">
         <button class="btn-primary" (click)="scrollToBooking()">
           Book Free Strategy Call
@@ -190,6 +202,15 @@
     </div>
     <p>&copy; 2026 Process Zero. All rights reserved.</p>
   </footer>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="sticky-cta">
+    <div class="sticky-cta-text">
+      <strong>Free strategy call</strong>
+      <span>Pre-qualified appointments, done for you</span>
+    </div>
+    <button class="btn-primary sticky-cta-btn" (click)="scrollToBooking()">Book Now</button>
+  </div>
 
   <div class="scroll-indicator">
     <ion-icon name="chevron-up-outline" class="scroll-icon"></ion-icon>

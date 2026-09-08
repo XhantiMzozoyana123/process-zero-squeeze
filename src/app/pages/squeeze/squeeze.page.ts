@@ -22,21 +22,21 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
   
   /** Benefit cards shown in the value proposition section. */
   benefits = [
-    { icon: 'shield-checkmark-outline', title: 'Zero Risk', description: 'No upfront costs, no retainers. You only engage when we deliver qualified opportunities that match your criteria.' },
-    { icon: 'people-outline', title: 'Pre-Vetted Decision Makers', description: 'Every prospect is verified through our multi-step lead vetting process — budget, authority, need, and timeline confirmed before you ever speak to them.' },
-    { icon: 'cash-outline', title: 'Recurring Commissions', description: 'Sell proven SaaS and digital products. Earn 20% recurring commission every month your customers stay active — your effort compounds over time.' },
-    { icon: 'rocket-outline', title: 'Sell Proven Products', description: 'Skip building from scratch. We partner with high-quality SaaS and digital product providers that already convert.' },
-    { icon: 'analytics-outline', title: 'Full AI + CRM Toolkit', description: 'AI outreach, contact management, meeting scheduling, and KPI tracking — everything you need to convert in one integrated platform.' },
-    { icon: 'card-outline', title: 'No Credit Card Required', description: 'Getting started is free. You only activate your earning workspace with credits when you\'re ready to sell — costs only once you close.' },
+    { icon: 'shield-checkmark-outline', title: 'Zero Risk', description: 'No retainers, no long contracts. You only pay for appointments we deliver that match your criteria — the risk is on us, not you.' },
+    { icon: 'people-outline', title: 'Pre-Vetted Decision Makers', description: 'Every prospect is verified through our multi-step vetting process — budget, authority, need, and timeline confirmed before we ever book them in.' },
+    { icon: 'calendar-outline', title: 'A Steady Flow of Appointments', description: 'A consistent stream of pre-qualified appointments delivered straight to your calendar every month — no more cold calling or chasing dead leads.' },
+    { icon: 'checkmark-circle-outline', title: 'BANT-Qualified Prospects', description: 'Budget, authority, need, and timeline are all confirmed before the booking. You only speak to people who are genuinely ready to buy.' },
+    { icon: 'chatbubbles-outline', title: 'Done-For-You Outreach', description: 'We handle the prospecting, cold outreach, follow-ups, and objection handling. You just show up to the meetings and close.' },
+    { icon: 'card-outline', title: 'No Credit Card Required', description: 'Book a free strategy call to see exactly how we would fill your calendar — no commitment, no card, no risk.' },
   ];
 
   /** How-it-works steps. */
   howItWorks = [
-    { step: '1', title: 'Book Your Strategy Call', description: 'Fill in your details and pick a slot on our Cal.com calendar. The call is completely free and obligation-free.' },
-    { step: '2', title: 'Lead Vetting & Needs Assessment', description: 'We assess your market, ideal client profile, and product fit. Only qualified strategies move forward.' },
-    { step: '3', title: 'Warm Opportunities Delivered', description: 'Qualified prospects enter your dashboard — pre-vetted, with contact info, company insights, and buying intent.' },
-    { step: '4', title: 'Close with Proven Products', description: 'Present from our curated SaaS catalogue and close deals with confidence — we provide scripts, demos, and support.' },
-    { step: '5', title: 'Earn Recurring Commission', description: 'Get paid 20% recurring commission every month your customer stays active. No caps, no ceilings.' },
+    { step: '1', title: 'Book Your Strategy Call', description: 'Pick a slot on our Cal.com calendar. The call is completely free and obligation-free — we map out exactly how we would fill your calendar.' },
+    { step: '2', title: 'We Define Your Ideal Client', description: 'Together we lock in your offer, target market, and qualification criteria — budget, authority, need, and timeline.' },
+    { step: '3', title: 'We Run the Outreach', description: 'Our team prospects and follows up with your ideal clients across email, LinkedIn, and phone. All done for you — you never lift a finger.' },
+    { step: '4', title: 'Prospects Get Qualified', description: 'Every lead is vetted against your criteria. Only prospects with real buying intent and decision-making authority move forward.' },
+    { step: '5', title: 'Appointments Land on Your Calendar', description: 'Qualified, pre-vetted meetings are booked straight into your calendar with confirmations and reminders. All you do is show up and close.' },
   ];
 
   /** FAQ accordion items. */
@@ -51,10 +51,10 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
 
   /** Social proof / trust stats. */
   trustStats = [
-    { value: '500+', label: 'Active Sales Reps' },
-    { value: 'R284K+', label: 'Monthly Commission Payouts' },
-    { value: '30+', label: 'Vetted Digital Products' },
-    { value: '4.9/5', label: 'Rep Satisfaction Score' },
+    { value: '500+', label: 'Appointments Booked' },
+    { value: '95%', label: 'Appointment Show-Up Rate' },
+    { value: '14 Days', label: 'Average Time to First Booking' },
+    { value: '4.9/5', label: 'Client Satisfaction Score' },
   ];
 
   private observer: IntersectionObserver | null = null;
@@ -65,6 +65,19 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
   
   navigateTo(path: string): void {
     this.router.navigateByUrl(path);
+  }
+
+  /** Trigger the booking flow — scrolls to the Cal.com inline embed. */
+  bookCall(): void {
+    this.scrollToBooking();
+  }
+
+  /** Smooth-scroll to the video showcase section. */
+  scrollToVideo(): void {
+    const section = this.el.nativeElement.querySelector('.video-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   /** Smooth-scroll back up to the Cal.com booking embed at the top of the page. */
