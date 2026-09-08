@@ -22,21 +22,21 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
   
   /** Benefit cards shown in the value proposition section. */
   benefits = [
-    { icon: 'shield-checkmark-outline', title: 'No Risk to You', description: 'No big upfront fees and no long contracts. You only pay for meetings we actually book that match what you asked for. The risk is on us, not you.' },
-    { icon: 'people-outline', title: 'Real Decision Makers', description: 'Before we book anyone, we check they have the money, the say-so, and a real reason to buy. You only meet people who can actually say yes.' },
-    { icon: 'calendar-outline', title: 'New Meetings Every Month', description: 'Fresh meetings with interested people, added to your calendar every month. No more cold calling or chasing leads that go nowhere.' },
-    { icon: 'checkmark-circle-outline', title: 'Ready to Buy', description: 'We check every person before the meeting: do they need what you sell, can they afford it, and can they decide? If not, they never reach your calendar.' },
-    { icon: 'chatbubbles-outline', title: 'We Do All the Legwork', description: 'We find the leads, reach out, follow up, and handle questions. You just show up to the meeting and close the deal.' },
-    { icon: 'card-outline', title: 'No Credit Card Needed', description: 'Book a free call to see how we would fill your calendar. No sign-up forms, no card, no risk.' },
+    { icon: 'time-outline', title: 'Get Your Week Back', description: 'No more cold calls, follow-ups, or chasing people who never reply. We do the finding and the chasing. You get your time back to actually run your business.' },
+    { icon: 'people-outline', title: 'Only Real Buyers', description: 'Before we book anyone, we check they need what you sell, can afford it, and can say yes. No time-wasters. No tyre-kickers. No "let me think about it".' },
+    { icon: 'calendar-outline', title: 'A Calendar That Sells Itself', description: 'New meetings with interested buyers, added to your calendar every month. While your competitors cold call, you are closing.' },
+    { icon: 'trending-up-outline', title: 'First Meeting in 14 Days', description: 'Most clients meet their first buyer within two weeks of starting. Fast results you can see on your own calendar.' },
+    { icon: 'shield-checkmark-outline', title: 'You Cannot Lose', description: 'Free for 14 days. No credit card. And after that, you only pay for meetings we actually book. If we don\'t book, you don\'t pay — the risk is on us.' },
+    { icon: 'chatbubbles-outline', title: 'We Handle Everything', description: 'Finding leads, reaching out, answering questions, booking the meeting, sending reminders. All of it, done for you.' },
   ];
 
   /** How-it-works steps. */
   howItWorks = [
-    { step: '1', title: 'Book a Free Call', description: 'Pick a time on our calendar. The call is free and you are not committing to anything. We explain how it all works.' },
-    { step: '2', title: 'Tell Us Who You Want to Meet', description: 'Together we agree on your perfect customer: who they are and what they need before you would want to meet them.' },
-    { step: '3', title: 'We Reach Out for You', description: 'Our team contacts your ideal customers by email, LinkedIn, and phone. We do all of it — you never have to.' },
-    { step: '4', title: 'We Check Every Lead', description: 'Before booking anyone, we make sure they want what you sell, can afford it, and can make the decision. Only serious people move forward.' },
-    { step: '5', title: 'Meetings Show Up in Your Calendar', description: 'We book the good ones straight into your calendar and send reminders. All you do is show up and close.' },
+    { step: '1', title: 'Book Your Free Call', description: 'Pick a time below. It takes 30 seconds and there is nothing to pay. We\'ll show you exactly how we\'d fill your calendar.' },
+    { step: '2', title: 'Tell Us Who Your Perfect Customer Is', description: 'On the call, we agree on exactly who you want to meet: their industry, size, budget, and what they need before you\'d want to talk to them.' },
+    { step: '3', title: 'We Go Find Them', description: 'Our team starts reaching out to your ideal customers by email, LinkedIn, and phone — hundreds of conversations, all handled by us.' },
+    { step: '4', title: 'We Test Every Lead', description: 'Before anyone gets near your calendar, we check they need what you sell, can afford it, and can make the decision. Time-wasters are filtered out.' },
+    { step: '5', title: 'Buyers Land in Your Calendar', description: 'We book the serious ones straight in and send reminders so they show up. You walk in, present, and close.' },
   ];
 
   /** FAQ accordion items. */
@@ -51,10 +51,10 @@ export class SqueezePage implements AfterViewInit, OnDestroy {
 
   /** Social proof / trust stats. */
   trustStats = [
-    { value: '500+', label: 'Appointments Booked' },
-    { value: '95%', label: 'Appointment Show-Up Rate' },
-    { value: '14 Days', label: 'Average Time to First Booking' },
-    { value: '4.9/5', label: 'Client Satisfaction Score' },
+    { value: '500+', label: 'Meetings Booked for Clients' },
+    { value: '95%', label: 'Of Booked Buyers Show Up' },
+    { value: '14 Days', label: 'To Your First Meeting' },
+    { value: 'R0', label: 'To Start — 14 Days Free' },
   ];
 
   private observer: IntersectionObserver | null = null;
