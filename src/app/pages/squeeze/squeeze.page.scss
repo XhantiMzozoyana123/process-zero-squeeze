@@ -103,14 +103,9 @@ $danger: #d94f4f;
 
 // ── Navigation Bar ──────────────────────────────────────────
 .landing-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba($paper, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba($ink, 0.06);
-  padding: 0 20px;
+  position: static; // NOT sticky — it was rendering as a big pinned bar on mobile
+  background: transparent;
+  padding: 14px 20px 0;
 }
 
 .nav-inner {
@@ -119,7 +114,8 @@ $danger: #d94f4f;
   gap: 16px;
   max-width: 960px;
   margin: 0 auto;
-  height: 56px;
+  height: auto;
+  min-height: 32px;
 }
 
 .nav-brand {
@@ -1165,7 +1161,7 @@ $danger: #d94f4f;
     position: fixed;
     left: 12px;
     right: 12px;
-    bottom: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     z-index: 90;
     display: flex;
     align-items: center;
@@ -1232,15 +1228,30 @@ $danger: #d94f4f;
   }
 
   .hero {
-    padding: 40px 18px 32px;
+    padding: 28px 16px 28px;
   }
 
   .hero-title {
-    font-size: 2.1rem;
+    font-size: 1.7rem;
+    line-height: 1.2;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-guarantee {
+    padding: 10px 14px;
+    gap: 8px;
+    margin-bottom: 14px;
+
+    ion-icon {
+      font-size: 18px;
+    }
+
+    span {
+      font-size: 0.85rem;
+    }
   }
 
   .hero-form-wrapper {
